@@ -9,12 +9,21 @@ const GET_TECHNICIANS = gql`
       phone
       appointments {
         id
-        receipt_no
+        title
+        description
         schedule_date
-        service_type
       }
     }
   }
 `;
 
-export { GET_TECHNICIANS };
+const GET_TECHNICIAN_NAMES = gql`
+  query getTechnicians {
+    technicians {
+      id
+      name
+    }
+  }
+`;
+
+export { GET_TECHNICIANS, GET_TECHNICIAN_NAMES };

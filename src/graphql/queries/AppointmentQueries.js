@@ -4,9 +4,9 @@ const GET_APPOINTMENTS = gql`
   query get_appointments {
     appointments {
       id
-      receipt_no
+      title
+      description
       schedule_date
-      service_type
       client {
         id
         name
@@ -24,4 +24,22 @@ const GET_APPOINTMENTS = gql`
   }
 `;
 
-export { GET_APPOINTMENTS };
+const GET_APPOINTMENT = gql`
+  query get_appointment($id: ID!) {
+    appointment(id: $id) {
+      title
+      description
+      schedule_date
+      client {
+        id
+        name
+      }
+      technician {
+        id
+        name
+      }
+    }
+  }
+`;
+
+export { GET_APPOINTMENTS, GET_APPOINTMENT };

@@ -7,9 +7,12 @@ import {
 } from '@apollo/client';
 
 // Components
-import Appointment from './components/Appointment';
-import Client from './components/Client';
-import Technician from './components/Technician';
+import Appointments from './components/Appointment/Appointments';
+
+import Technician from './components/Technician/Technician';
+import Header from './components/Header';
+import ViewAppointment from './components/Appointment/ViewAppointment';
+import Client from './components/Client/Client';
 
 // Initialize
 const cache = new InMemoryCache({
@@ -41,11 +44,15 @@ function App() {
     <>
       <ApolloProvider client={client}>
         <Router>
-          <Routes>
-            <Route path="/" element={<Appointment />} />
-            <Route path="/api/v1/client" element={<Client />} />
-            <Route path="/api/v1/technician" element={<Technician />} />
-          </Routes>
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Appointments />} />
+              <Route path="/:id" element={<ViewAppointment />} />
+              <Route path="/clients" element={<Client />} />
+              <Route path="/technicians" element={<Technician />} />
+            </Routes>
+          </div>
         </Router>
       </ApolloProvider>
     </>
