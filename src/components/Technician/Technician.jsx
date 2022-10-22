@@ -3,12 +3,10 @@ import { FiTool } from 'react-icons/fi';
 import Spinner from '../Spinner';
 import { Link } from 'react-router-dom';
 import { GET_TECHNICIANS } from '../../graphql/queries/TechnicianQueries';
-import ViewTechAppointmentModal from './ViewTechAppointmentModal';
 import { useState } from 'react';
 
 export default function Client() {
   const { loading, error, data } = useQuery(GET_TECHNICIANS);
-  const [appointments, setAppointments] = useState([]);
 
   if (loading) return <Spinner />;
   if (error) return <p>Something went wrong</p>;
@@ -29,10 +27,8 @@ export default function Client() {
               </div>
               <div className="d-flex justify-content-between p-3">
                 <Link
+                  to={`/technician/${tech.id}`}
                   className="btn btn-secondary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#viewTechAppointment"
-                  onClick={() => setAppointments(tech.appointments)}
                 >
                   View Appointments
                 </Link>
@@ -41,7 +37,6 @@ export default function Client() {
           </div>
         ))}
       </div>
-      <ViewTechAppointmentModal appointments={appointments} />
     </>
   );
 }

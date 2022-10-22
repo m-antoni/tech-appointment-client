@@ -80,6 +80,7 @@ export default function AddAppointmentModal() {
             <h5 className="modal-title">Add Appointment</h5>
             <button
               type="button"
+              className="btn-close bg-primary"
               data-bs-dismiss="modal"
               ref={closeRef}
               aria-label="Close"

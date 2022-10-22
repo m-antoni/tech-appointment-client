@@ -1,10 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  gql,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 // Components
 import Appointments from './components/Appointment/Appointments';
@@ -13,6 +8,8 @@ import Technician from './components/Technician/Technician';
 import Header from './components/Header';
 import ViewAppointment from './components/Appointment/ViewAppointment';
 import Client from './components/Client/Client';
+import ViewTechAppointment from './components/Technician/ViewTechAppointments';
+import NotFound from './components/NotFound';
 
 // Initialize
 const cache = new InMemoryCache({
@@ -51,6 +48,8 @@ function App() {
               <Route path="/:id" element={<ViewAppointment />} />
               <Route path="/clients" element={<Client />} />
               <Route path="/technicians" element={<Technician />} />
+              <Route path="/technician/:id" element={<ViewTechAppointment />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </Router>

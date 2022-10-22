@@ -1,6 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
+  const location = useLocation();
+
+  console.log(location);
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
       <div className="container">
@@ -32,14 +36,16 @@ export default function Header() {
             </li>
           </ul>
           <div className="d-flex">
-            <button
-              className="btn btn-secondary my-2 my-sm-0"
-              data-bs-toggle="modal"
-              data-bs-target="#addAppointmentModal"
-              type="submit"
-            >
-              Add New
-            </button>
+            {location.pathname === '/' && (
+              <button
+                className="btn btn-secondary my-2 my-sm-0"
+                data-bs-toggle="modal"
+                data-bs-target="#addAppointmentModal"
+                type="submit"
+              >
+                Add New
+              </button>
+            )}
           </div>
         </div>
       </div>

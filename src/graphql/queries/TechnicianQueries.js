@@ -7,6 +7,15 @@ const GET_TECHNICIANS = gql`
       name
       email
       phone
+    }
+  }
+`;
+
+const GET_TECHNICIAN = gql`
+  query getTechnician($id: ID!) {
+    technician(id: $id) {
+      id
+      name
       appointments {
         id
         title
@@ -18,7 +27,7 @@ const GET_TECHNICIANS = gql`
 `;
 
 const GET_TECHNICIAN_NAMES = gql`
-  query getTechnicians {
+  query getTechnicianNames {
     technicians {
       id
       name
@@ -26,4 +35,4 @@ const GET_TECHNICIAN_NAMES = gql`
   }
 `;
 
-export { GET_TECHNICIANS, GET_TECHNICIAN_NAMES };
+export { GET_TECHNICIANS, GET_TECHNICIAN_NAMES, GET_TECHNICIAN };
